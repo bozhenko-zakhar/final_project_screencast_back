@@ -1,0 +1,37 @@
+{
+  "name": "final_project_screencast_back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+	"type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node src/server.js",
+		"dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bozhenko-zakhar/final_project_screencast_back.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bozhenko-zakhar/final_project_screencast_back/issues"
+  },
+  "homepage": "https://github.com/bozhenko-zakhar/final_project_screencast_back#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "celebrate": "^15.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "http-errors": "^2.0.1",
+    "mongoose": "^9.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
