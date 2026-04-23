@@ -1,20 +1,20 @@
-import { loginUser } from "./auth/loginUser";
-import { logoutUser } from "./auth/logoutUser";
-import { refreshUserSession } from "./auth/refreshUserSession";
-import { registerUser } from "./auth/registerUser";
+import { loginUser } from "./auth/loginUser.js";
+import { logoutUser } from "./auth/logoutUser.js";
+import { refreshUserSession } from "./auth/refreshUserSession.js";
+import { registerUser } from "./auth/registerUser.js";
 
-import { createDiary } from "./diaries/createDiary";
-import { deleteDiary } from "./diaries/deleteDiary";
-import { getDiary } from "./diaries/getDiary";
-import { updateDiary } from "./diaries/updateDiary";
+import { createDiary } from "./diaries/createDiary.js";
+import { deleteDiary } from "./diaries/deleteDiary.js";
+import { getDiary } from "./diaries/getDiary.js";
+import { updateDiary } from "./diaries/updateDiary.js";
 
-import { changeTask } from "./tasks/changeTask";
-import { createTask } from "./tasks/createTask";
-import { getTask } from "./tasks/getTask";
+import { changeTask } from "./tasks/changeTask.js";
+import { createTask } from "./tasks/createTask.js";
+import { getTask } from "./tasks/getTask.js";
 
-import { getUser } from "./users/getUser";
-import { updateUserData } from "./users/updateUserData";
-import { updateUserImage } from "./users/updateUserImage";
+import { getUser } from "./users/getUser.js";
+import { updateUserData } from "./users/updateUserData.js";
+import { updateUserImage } from "./users/updateUserImage.js";
 
 export const auth = {
 	loginUser,
