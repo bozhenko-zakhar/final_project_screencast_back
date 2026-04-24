@@ -7,11 +7,11 @@ import cookieParser from "cookie-parser";
 import { conectMongoDB } from "./db/connectToMongoDB.js";
 import { notFoundHandler } from "./middleware/notFoundHandler.js";
 import { errorHandler } from "./middleware/errorHandler.js";
-import authRoute from "./routes/authRoute.js"
-import diariesRoute from "./routes/diariesRoute.js"
-import usersRoute from "./routes/usersRoute.js"
-import tasksRoute from "./routes/tasksRoute.js"
-import weeksRoute from "./routes/weeksRoute.js"
+import authRoute from "./routes/authRoute.js";
+import diariesRoute from "./routes/diariesRoute.js";
+import usersRoute from "./routes/usersRoute.js";
+import tasksRoute from "./routes/tasksRoute.js";
+import weeksRoute from "./routes/weeksRoute.js";
 
 const PORT = process.env.PORT ?? 3000;
 
@@ -23,9 +23,9 @@ app.use(helmet());
 app.use(cookieParser());
 
 app.use("/api/auth", authRoute);
-app.use("/api/users", diariesRoute);
-app.use("/api/tasks", usersRoute);
-app.use("/api/diaries", tasksRoute);
+app.use("/api/users", usersRoute);
+app.use("/api/tasks", tasksRoute);
+app.use("/api/diaries", diariesRoute);
 app.use("/api/weeks", weeksRoute);
 
 app.use(notFoundHandler);
