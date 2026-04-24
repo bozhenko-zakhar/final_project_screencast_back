@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { weeks } from "../controllers/index.js";
-import { authenticate } from "../middleware/authenticate.js";
+import { authenticate } from "../middlewares/authenticate.js";
 
 const weeksRoute = Router();
 
