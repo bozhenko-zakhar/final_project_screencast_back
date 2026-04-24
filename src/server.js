@@ -23,9 +23,9 @@ app.use(helmet());
 app.use(cookieParser());
 
 app.use("/auth", authRoute);
-app.use("/users", diariesRoute);
-app.use("/tasks", usersRoute);
-app.use("/diaries", tasksRoute);
+app.use("/users", usersRoute);
+app.use("/tasks",  tasksRoute );
+app.use("/diaries",diariesRoute);
 app.use("/weeks", weeksRoute);
 
 app.use(notFoundHandler);

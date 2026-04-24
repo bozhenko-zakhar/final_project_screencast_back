@@ -8,5 +8,4 @@ authRoute.post("/logout", auth.logoutUser);
 authRoute.post("/refresh", auth.refreshUserSession);
 authRoute.post("/register", auth.registerUser);
 
-
 export default authRoute;
