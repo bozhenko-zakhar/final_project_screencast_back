@@ -1,3 +1,3 @@
-export const registerUser = (req, res) => {
-	res.json("Register OK");
-}
+export const registerUser =  (req, res) => {
+  res.json("User created");
+};
