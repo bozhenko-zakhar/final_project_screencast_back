@@ -1,7 +1,13 @@
 import { Task } from "../../models/task.js";
 
-export const getTask = async (req, res) => {
-  const tasks = await Task.find({ userId: req.user._id });
+export async function getTasks(req, res) {
+  try {
+    const tasks = await Task.find({ owner: req.user._id }).sort({
+      createdAt: -1,
+    });
 
-  res.status(200).json({ data: tasks });
-};
+    res.json(tasks);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+}

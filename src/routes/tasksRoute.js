@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { getTask } from "../controllers/tasks/getTask.js";
+import { getTasks } from "../controllers/tasks/getTask.js";
 
 const tasksRoute = Router();
 
-tasksRoute.get("/tasks", getTask);
+tasksRoute.get("/", getTasks);
 
 export default tasksRoute;
