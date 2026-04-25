@@ -13,11 +13,11 @@ export const registerUser = async (req, res) => {
 
 	const hashedPassword = await bcrypt.hash(password, 10);
 
-	const newUser = User.create({
+	const newUser = await User.create({
 		email,
 		password: hashedPassword,
 	});
-	
+	console.log(newUser._id)
 	const newSession = await createSession(newUser._id);
 	setSessionCookies(res, newSession);
 
