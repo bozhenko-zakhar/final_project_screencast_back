@@ -16,6 +16,9 @@ import { getUser } from "./users/getUser.js";
 import { updateUserData } from "./users/updateUserData.js";
 import { updateUserImage } from "./users/updateUserImage.js";
 
+import { getMomStateInfo } from "./weeks/getMomStateInfo.js";
+import { getWeekInfo } from "./weeks/getWeekInfo.js";
+
 export const auth = {
 	loginUser,
 	logoutUser,
@@ -40,4 +43,9 @@ export const users = {
 	getUser,
 	updateUserData,
 	updateUserImage
+};
+
+export const weeks = {
+	getWeekInfo,
+	getMomStateInfo
 };
