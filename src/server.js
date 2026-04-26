@@ -27,8 +27,7 @@ app.use("/users", diariesRoute);
 app.use("/tasks", usersRoute);
 app.use("/diaries", tasksRoute);
 app.use("/weeks", weeksRoute);
-app.use("/api", tasksRoute);
-app.use("/tasks", tasksRoute);
+app.use("/api/tasks", tasksRoute);
 
 app.use(notFoundHandler);
 app.use(errors());
