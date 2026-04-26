@@ -1,5 +1,4 @@
 import { Router } from "express";
-// import { getWeekInfo } from "../controllers/weeks/getWeekInfo.js";
 import { weeks } from "../controllers/index.js";
 import { getMomStateInfo } from "../controllers/weeks/getMomStateInfo.js";
 import { authenticate } from "../middleware/authenticate.js";
