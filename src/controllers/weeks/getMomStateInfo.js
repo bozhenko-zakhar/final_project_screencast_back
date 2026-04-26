@@ -8,7 +8,11 @@ export const getMomStateInfo = async(req, res) => {
 
     const momState = await MomStateModel.findOne({
         weekNumber: currentWeek
-    })
+    });
+
+    if(!momState) {
+        return res.status(404).json({message: 'Mom state not found'});
+    };
 
     res.status(200).json(momState);
 }

@@ -9,5 +9,9 @@ export const getWeekInfo = async (req, res) => {
     weekNumber: currentWeek,
   });
 
+     if(!babyState) {
+        return res.status(404).json({message: 'Baby state not found'});
+    };
+
   res.status(200).json({ babyState, daysLeft });
 };
