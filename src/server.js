@@ -22,11 +22,11 @@ app.use(cors({ methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"] }));
 app.use(helmet());
 app.use(cookieParser());
 
-app.use("/api/auth", authRoute);
-app.use("/api/users", usersRoute);
-app.use("/api/tasks", tasksRoute);
-app.use("/api/diaries", diariesRoute);
-app.use("/api/weeks", weeksRoute);
+app.use("/auth", authRoute);
+app.use("/users", usersRoute);
+app.use("/tasks",  tasksRoute );
+app.use("/diaries",diariesRoute);
+app.use("/weeks", weeksRoute);
 
 app.use(notFoundHandler);
 app.use(errors());
