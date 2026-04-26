@@ -7,7 +7,7 @@ export const calculateDaysLeft = (weekNumber, dueDate) => {
     }
 
     if (weekNumber) {
-        const daysLeft = (39 - weekNumber) * 7;
+        const daysLeft = (40 - weekNumber) * 7;
         return daysLeft > 0 ? daysLeft : 0;
     }
     

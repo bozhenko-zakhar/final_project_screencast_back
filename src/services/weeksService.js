@@ -11,12 +11,15 @@ export const getWeekData = async (weekNumber, dueDate) => {
         MomStateModel.findOne({ weekNumber: numberWeek })
     ]);
     
+    if (!baby || !mom) {
+        throw createHttpError(404, `Information for week ${numberWeek} not found`);
+    }
 
     const daysToBirth = calculateDaysLeft(numberWeek, dueDate)
 
     return {
+        daysToBirth,
         baby,
-        mom,
-        daysToBirth
+        mom
     };
 }
