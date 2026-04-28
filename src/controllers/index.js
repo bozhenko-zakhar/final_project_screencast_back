@@ -16,28 +16,40 @@ import { getUser } from "./users/getUser.js";
 import { updateUserData } from "./users/updateUserData.js";
 import { updateUserImage } from "./users/updateUserImage.js";
 
+import { getPublicWeekInfo } from "./weeks/getPublicWeekInfo.js";
+import { getPrivateWeekInfo } from "./weeks/getPrivateWeekInfo.js";
+import { getBabyDevelopment } from "./weeks/getBabyDevelopment.js";
+import { getMomBodyInfo } from "./weeks/getMomBodyInfo.js";
+
 export const auth = {
-	loginUser,
-	logoutUser,
-	refreshUserSession,
-	registerUser
+  loginUser,
+  logoutUser,
+  refreshUserSession,
+  registerUser,
 };
 
 export const diaries = {
-	createDiary,
-	deleteDiary,
-	getDiary,
-	updateDiary
+  createDiary,
+  deleteDiary,
+  getDiary,
+  updateDiary,
 };
 
 export const tasks = {
-	changeTask,
-	createTask,
-	getTasks
+  changeTask,
+  createTask,
+  getTasks,
 };
 
 export const users = {
-	getUser,
-	updateUserData,
-	updateUserImage
+  getUser,
+  updateUserData,
+  updateUserImage,
+};
+
+export const weeks = {
+  getPublicWeekInfo,
+  getPrivateWeekInfo,
+  getBabyDevelopment,
+  getMomBodyInfo,
 };

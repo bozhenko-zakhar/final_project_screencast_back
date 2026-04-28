@@ -1,19 +1,28 @@
 import { Router } from "express";
 import { celebrate } from "celebrate";
-import { authenticate } from "../middlewares/authenticate.js";
+
+import { authenticate } from "../middleware/authenticate.js";
 
 import { getTasks } from "../controllers/tasks/getTask.js";
+import { createTask } from "../controllers/tasks/createTask.js";
 import { changeTask } from "../controllers/tasks/changeTask.js";
 
-import { updateTaskStatusSchema } from "../validations/tasksValidation.js";
+import {
+  createTaskSchema,
+  updateTaskStatusSchema,
+} from "../validations/tasksValidation.js";
 
 const tasksRoute = Router();
 
-tasksRoute.get("/", authenticate, getTasks)
+tasksRoute.get("/", authenticate, getTasks);
+
+tasksRoute.post("/", authenticate, celebrate(createTaskSchema), createTask);
+
 tasksRoute.patch(
-  "/tasks/:taskId/status",
+  "/:taskId/status",
+  authenticate,
   celebrate(updateTaskStatusSchema),
-  changeTask,
+  changeTask
 );
 
 export default tasksRoute;
