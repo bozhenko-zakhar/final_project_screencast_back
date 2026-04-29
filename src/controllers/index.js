@@ -16,10 +16,8 @@ import { getUser } from "./users/getUser.js";
 import { updateUserData } from "./users/updateUserData.js";
 import { updateUserImage } from "./users/updateUserImage.js";
 
-import { getPublicWeekInfo } from "./weeks/getPublicWeekInfo.js";
-import { getPrivateWeekInfo } from "./weeks/getPrivateWeekInfo.js";
-import { getBabyDevelopment } from "./weeks/getBabyDevelopment.js";
-import { getMomBodyInfo } from "./weeks/getMomBodyInfo.js";
+import { getMomStateInfo } from "./weeks/getMomStateInfo.js";
+import { getWeekInfo } from "./weeks/getWeekInfo.js";
 
 export const auth = {
   loginUser,
@@ -48,8 +46,6 @@ export const users = {
 };
 
 export const weeks = {
-  getPublicWeekInfo,
-  getPrivateWeekInfo,
-  getBabyDevelopment,
-  getMomBodyInfo,
+  getWeekInfo,
+  getMomStateInfo,
 };
