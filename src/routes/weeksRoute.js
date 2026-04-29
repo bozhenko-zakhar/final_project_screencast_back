@@ -17,6 +17,7 @@ weeksRoute.get("/public/info", getPublicWeekInfo);
 weeksRoute.get("/private/info", authenticate, getPrivateWeekInfo);
 weeksRoute.get("/baby/:week", authenticate, getBabyDevelopment);
 weeksRoute.get("/mom/:week", authenticate, getMomBodyInfo);
+weeksRoute.get("/mom-state", authenticate, getMomBodyInfo);
 
 weeksRoute.get("/", celebrate(getWeekSchema), getWeekInfo);
 weeksRoute.get("/:weekNumber", authenticate, getBabyStateByWeek);
