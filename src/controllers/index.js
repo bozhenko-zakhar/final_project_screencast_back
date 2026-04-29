@@ -10,7 +10,7 @@ import { updateDiary } from "./diaries/updateDiary.js";
 
 import { changeTask } from "./tasks/changeTask.js";
 import { createTask } from "./tasks/createTask.js";
-import { getTask } from "./tasks/getTask.js";
+import { getTasks } from "./tasks/getTask.js";
 
 import { getUser } from "./users/getUser.js";
 import { updateUserData } from "./users/updateUserData.js";
@@ -36,7 +36,7 @@ export const diaries = {
 export const tasks = {
 	changeTask,
 	createTask,
-	getTask
+	getTasks
 };
 
 export const users = {
