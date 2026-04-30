@@ -10,6 +10,7 @@ import { changeTask } from "../controllers/tasks/changeTask.js";
 import {
   createTaskSchema,
   updateTaskStatusSchema,
+  taskIdSchema,
 } from "../validations/tasksValidation.js";
 
 const tasksRoute = Router();
@@ -26,6 +27,7 @@ tasksRoute.post(
 tasksRoute.patch(
   "/:taskId/status",
   authenticate,
+  celebrate(taskIdSchema),
   celebrate(updateTaskStatusSchema),
   changeTask
 );

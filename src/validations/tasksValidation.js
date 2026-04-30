@@ -16,14 +16,20 @@ const dateValidation = Joi.string()
 
 export const createTaskSchema = {
   [Segments.BODY]: Joi.object({
-    name: Joi.string().trim().min(2).max(100).required(),
+    name: Joi.string().trim().min(1).max(96).required(),
     date: dateValidation.default(getCurrentDate),
-    isDone: Joi.boolean().optional(),
+    isDone: Joi.boolean().default(false),
   }),
 };
 
 export const updateTaskStatusSchema = {
   [Segments.BODY]: Joi.object({
     isDone: Joi.boolean().required(),
+  }),
+};
+
+export const taskIdSchema = {
+  [Segments.PARAMS]: Joi.object({
+    taskId: Joi.string().hex().length(24).required(),
   }),
 };

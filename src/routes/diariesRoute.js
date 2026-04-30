@@ -7,6 +7,7 @@ import { diaries } from "../controllers/index.js";
 import {
   createDiarySchema,
   updateDiarySchema,
+  diaryIdSchema,
 } from "../validations/diariesValidation.js";
 
 const diariesRoute = Router();
@@ -23,10 +24,16 @@ diariesRoute.get("/", authenticate, diaries.getDiary);
 diariesRoute.patch(
   "/:diaryId",
   authenticate,
+  celebrate(diaryIdSchema),
   celebrate(updateDiarySchema),
   diaries.updateDiary
 );
 
-diariesRoute.delete("/:diaryId", authenticate, diaries.deleteDiary);
+diariesRoute.delete(
+  "/:diaryId",
+  authenticate,
+  celebrate(diaryIdSchema),
+  diaries.deleteDiary
+);
 
 export default diariesRoute;

@@ -40,3 +40,9 @@ export const updateDiarySchema = {
       .optional(),
   }).min(1),
 };
+
+export const diaryIdSchema = {
+  [Segments.PARAMS]: Joi.object({
+    diaryId: Joi.string().hex().length(24).required(),
+  }),
+};
