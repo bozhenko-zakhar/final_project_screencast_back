@@ -9,7 +9,9 @@ import { authenticate } from "../middleware/authenticate.js";
 const weeksRoute = Router();
 
 weeksRoute.get("/public", celebrate(getWeekSchema), weeks.getWeekInfo);
+
 weeksRoute.get("/private", authenticate, weeks.getWeekInfo);
+
 weeksRoute.get("/mom-state", authenticate, weeks.getMomStateInfo);
 
 weeksRoute.get("/:weekNumber", authenticate, getBabyStateByWeek);

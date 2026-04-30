@@ -16,7 +16,12 @@ const tasksRoute = Router();
 
 tasksRoute.get("/", authenticate, getTasks);
 
-tasksRoute.post("/", authenticate, celebrate(createTaskSchema), createTask);
+tasksRoute.post(
+  "/",
+  authenticate,
+  celebrate(createTaskSchema),
+  createTask
+);
 
 tasksRoute.patch(
   "/:taskId/status",
