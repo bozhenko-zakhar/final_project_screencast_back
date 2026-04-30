@@ -4,8 +4,8 @@ const babyStateSchema = new Schema(
   {
     weekNumber: {
       type: Number,
-      required: [true, 'Номер тижня обовʼязковий'],
-      unique: true,
+      required: [true, 'weekNumber is required'],
+      unique: true, // clear
     },
     analogy: {
       type: String,
