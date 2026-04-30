@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
 
+// remove comfortTipSchema
 const comfortTipSchema = new Schema(
   {
     category: { type: String, required: true },
@@ -8,6 +9,7 @@ const comfortTipSchema = new Schema(
   { _id: false },
 );
 
+// rewrite momStateSchema
 const momStateSchema = new Schema(
   {
     weekNumber: {

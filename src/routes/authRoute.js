@@ -8,7 +8,7 @@ const authRoute = Router();
 
 authRoute.post("/login",  celebrate(loginUserSchema), auth.loginUser);
 authRoute.post('/logout', authenticate, auth.logoutUser);
-authRoute.post('/refresh', authenticate, auth.refreshUserSession);
+authRoute.post('/refresh', authenticate, auth.refreshUserSession); // refreshAuthenticate
 authRoute.post("/register", celebrate(registerUserSchema), auth.registerUser);
 
 
