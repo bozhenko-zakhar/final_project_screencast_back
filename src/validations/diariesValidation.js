@@ -23,22 +23,34 @@ const dateValidation = Joi.string()
     return value;
   });
 
-export const createTaskSchema = {
+export const createDiarySchema = {
   [Segments.BODY]: Joi.object({
-    name: Joi.string().trim().min(1).max(96).required(),
+    title: Joi.string().trim().min(1).max(64).required(),
+    description: Joi.string().trim().min(1).max(1000).required(),
     date: dateValidation.default(getCurrentDate),
-    isDone: Joi.boolean().default(false),
+    emotions: Joi.array()
+      .items(Joi.string().custom(objectIdValidator))
+      .min(1)
+      .max(12)
+      .required(),
   }),
 };
 
-export const updateTaskStatusSchema = {
+export const updateDiarySchema = {
   [Segments.BODY]: Joi.object({
-    isDone: Joi.boolean().required(),
-  }),
+    title: Joi.string().trim().min(1).max(64).optional(),
+    description: Joi.string().trim().min(1).max(1000).optional(),
+    date: dateValidation.optional(),
+    emotions: Joi.array()
+      .items(Joi.string().custom(objectIdValidator))
+      .min(1)
+      .max(12)
+      .optional(),
+  }).min(1),
 };
 
-export const taskIdSchema = {
+export const diaryIdSchema = {
   [Segments.PARAMS]: Joi.object({
-    taskId: Joi.string().custom(objectIdValidator).required(),
+    diaryId: Joi.string().custom(objectIdValidator).required(),
   }),
 };

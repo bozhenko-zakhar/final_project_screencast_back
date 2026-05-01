@@ -20,32 +20,32 @@ import { getMomStateInfo } from "./weeks/getMomStateInfo.js";
 import { getWeekInfo } from "./weeks/getWeekInfo.js";
 
 export const auth = {
-	loginUser,
-	logoutUser,
-	refreshUserSession,
-	registerUser
+  loginUser,
+  logoutUser,
+  refreshUserSession,
+  registerUser,
 };
 
 export const diaries = {
-	createDiary,
-	deleteDiary,
-	getDiary,
-	updateDiary
+  createDiary,
+  deleteDiary,
+  getDiary,
+  updateDiary,
 };
 
 export const tasks = {
-	changeTask,
-	createTask,
-	getTasks
+  changeTask,
+  createTask,
+  getTasks,
 };
 
 export const users = {
-	getUser,
-	updateUserData,
-	updateUserImage
+  getUser,
+  updateUserData,
+  updateUserImage,
 };
 
 export const weeks = {
-	getWeekInfo,
-	getMomStateInfo
+  getWeekInfo,
+  getMomStateInfo,
 };
