@@ -1,23 +1,23 @@
-import { loginUser } from "./auth/loginUser.js";
-import { logoutUser } from "./auth/logoutUser.js";
-import { refreshUserSession } from "./auth/refreshUserSession.js";
-import { registerUser } from "./auth/registerUser.js";
+import { loginUser } from './auth/loginUser.js';
+import { logoutUser } from './auth/logoutUser.js';
+import { refreshUserSession } from './auth/refreshUserSession.js';
+import { registerUser } from './auth/registerUser.js';
 
-import { createDiary } from "./diaries/createDiary.js";
-import { deleteDiary } from "./diaries/deleteDiary.js";
-import { getDiary } from "./diaries/getDiary.js";
-import { updateDiary } from "./diaries/updateDiary.js";
+import { createDiary } from './diaries/createDiary.js';
+import { deleteDiary } from './diaries/deleteDiary.js';
+import { getDiary } from './diaries/getDiary.js';
+import { updateDiary } from './diaries/updateDiary.js';
 
-import { changeTask } from "./tasks/changeTask.js";
-import { createTask } from "./tasks/createTask.js";
-import { getTasks } from "./tasks/getTask.js";
+import { changeTask } from './tasks/changeTask.js';
+import { createTask } from './tasks/createTask.js';
+import { getTasks } from './tasks/getTask.js';
 
-import { getUser } from "./users/getUser.js";
-import { updateUserData } from "./users/updateUserData.js";
-import { updateUserImage } from "./users/updateUserImage.js";
+import { getUser } from './users/getUser.js';
+import { updateUser } from './users/updateUser.js';
+import { updateUserAvatar } from './users/updateUserAvatar.js';
 
-import { getMomStateInfo } from "./weeks/getMomStateInfo.js";
-import { getWeekInfo } from "./weeks/getWeekInfo.js";
+import { getMomStateInfo } from './weeks/getMomStateInfo.js';
+import { getWeekInfo } from './weeks/getWeekInfo.js';
 
 export const auth = {
   loginUser,
@@ -41,8 +41,8 @@ export const tasks = {
 
 export const users = {
   getUser,
-  updateUserData,
-  updateUserImage,
+  updateUser,
+  updateUserAvatar,
 };
 
 export const weeks = {

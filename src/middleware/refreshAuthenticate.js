@@ -2,9 +2,8 @@ import createHttpError from 'http-errors';
 
 import { Session } from '../models/session.js';
 import { User } from '../models/user.js';
-import { generateTokens } from '../services.js';
+import { generateTokens, setSessionCookies } from '../services/auth.js';
 import { FIFTEEN_MINUTES, ONE_DAY } from '../constants/time.js';
-import { setSessionCookies } from '../services/auth.js';
 
 export const refreshAuthenticate = async (req, res, next) => {
   try {
