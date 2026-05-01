@@ -2,14 +2,14 @@ import { model, Schema } from "mongoose";
 
 const userSchema = new Schema(
   {
-    username: { type: String, trim: true },
+    name: { type: String, trim: true },
     email: { type: String, unique: true, required: true, trim: true },
     password: { type: String, required: true },
     dueDate: { type: Date, required: false },
     gender: {type: String, enum: ['boy', 'girl', null], required: false}
   },
   {
-    timeStamps: true,
+    timestamps: true,
     versionKey: false,
   },
 );
@@ -20,7 +20,7 @@ const userSchema = new Schema(
 //   }
 // });
 
-userSchema.method.toJSON = function () {
+userSchema.methods.toJSON = function () {
   const obj = this.toObject();
   delete obj.password;
   return obj;
