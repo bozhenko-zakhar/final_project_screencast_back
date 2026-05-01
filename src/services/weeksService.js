@@ -1,10 +1,11 @@
 import { BabyStateModel } from "../models/baby_state.js";
 import { MomStateModel } from "../models/mom_state.js";
-import { calculateDaysLeft } from "../utils/calculateDaysLeft.js";
+import { getCurrentWeek } from "./getCurrentWeek.js";
+import createHttpError from 'http-errors';
 
 export const getWeekData = async (weekNumber, dueDate) => {
 
-    const numberWeek = Number(weekNumber)
+    const numberWeek = 1; 
 
     const [baby, mom] = await Promise.all([
         BabyStateModel.findOne({ weekNumber: numberWeek }),
@@ -15,10 +16,10 @@ export const getWeekData = async (weekNumber, dueDate) => {
         throw createHttpError(404, `Information for week ${numberWeek} not found`);
     }
 
-    const daysToBirth = calculateDaysLeft(numberWeek, dueDate)
+    const { daysLeft } = getCurrentWeek({ dueDate });
 
     return {
-        daysToBirth,
+        daysToBirth: daysLeft,
         baby,
         mom
     };
