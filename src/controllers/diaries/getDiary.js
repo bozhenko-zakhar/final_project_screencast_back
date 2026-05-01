@@ -9,7 +9,9 @@ export const getDiary = async (req, res, next) => {
       throw createHttpError(401, "Unauthorized");
     }
 
-    const diaries = await Diary.find({ owner }).sort({ createdAt: -1 });
+    const diaries = await Diary.find({ owner })
+      .populate("emotions") 
+      .sort({ createdAt: -1 });
 
     res.status(200).json({
       status: 200,
