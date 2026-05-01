@@ -2,7 +2,6 @@ import crypto from 'node:crypto';
 import { Session } from '../models/session.js';
 import { FIFTEEN_MINUTES, ONE_DAY } from '../constants/time.js';
 
-
 export const createSession = async (userId) => {
   return Session.create({
     userId,
@@ -12,6 +11,11 @@ export const createSession = async (userId) => {
     refreshTokenValidUntil: new Date(Date.now() + ONE_DAY),
   });
 };
+
+export const generateTokens = () => ({
+  accessToken: crypto.randomBytes(30).toString('hex'),
+  refreshToken: crypto.randomBytes(30).toString('hex'),
+});
 
 export const setSessionCookies = (res, session) => {
   res.cookie('accessToken', session.accessToken, {
