@@ -12,9 +12,9 @@ const tasksRoute = Router();
 tasksRoute.get('/', authenticate, getTasks);
 tasksRoute.patch(
   '/:taskId/status',
+  authenticate,
   celebrate(updateTaskStatusSchema),
   changeTask,
-  authenticate,
 );
 
 export default tasksRoute;
