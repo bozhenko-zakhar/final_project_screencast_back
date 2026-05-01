@@ -12,18 +12,14 @@ import {
 
 const diariesRoute = Router();
 
-diariesRoute.post(
-  "/",
-  authenticate,
-  celebrate(createDiarySchema),
-  diaries.createDiary
-);
+diariesRoute.use(authenticate);
 
-diariesRoute.get("/", authenticate, diaries.getDiary);
+diariesRoute.post("/", celebrate(createDiarySchema), diaries.createDiary);
+
+diariesRoute.get("/", diaries.getDiary);
 
 diariesRoute.patch(
   "/:diaryId",
-  authenticate,
   celebrate(diaryIdSchema),
   celebrate(updateDiarySchema),
   diaries.updateDiary
@@ -31,7 +27,6 @@ diariesRoute.patch(
 
 diariesRoute.delete(
   "/:diaryId",
-  authenticate,
   celebrate(diaryIdSchema),
   diaries.deleteDiary
 );

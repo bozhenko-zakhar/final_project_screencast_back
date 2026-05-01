@@ -1,5 +1,4 @@
 import createHttpError from "http-errors";
-import { isValidObjectId } from "mongoose";
 import { Diary } from "../../models/diary.js";
 
 export const deleteDiary = async (req, res, next) => {
@@ -9,10 +8,6 @@ export const deleteDiary = async (req, res, next) => {
 
     if (!owner) {
       throw createHttpError(401, "Unauthorized");
-    }
-
-    if (!isValidObjectId(diaryId)) {
-      throw createHttpError(400, "Invalid diary id");
     }
 
     const diary = await Diary.findOneAndDelete({

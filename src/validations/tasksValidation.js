@@ -1,8 +1,17 @@
 import { Joi, Segments } from "celebrate";
+import { isValidObjectId } from "mongoose";
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 
 const getCurrentDate = () => new Date().toISOString().slice(0, 10);
+
+const objectIdValidator = (value, helpers) => {
+  if (!isValidObjectId(value)) {
+    return helpers.message("Invalid id format");
+  }
+
+  return value;
+};
 
 const dateValidation = Joi.string()
   .pattern(datePattern)
@@ -30,6 +39,6 @@ export const updateTaskStatusSchema = {
 
 export const taskIdSchema = {
   [Segments.PARAMS]: Joi.object({
-    taskId: Joi.string().hex().length(24).required(),
+    taskId: Joi.string().custom(objectIdValidator).required(),
   }),
 };

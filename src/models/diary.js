@@ -28,7 +28,7 @@ const diarySchema = new Schema(
       type: [
         {
           type: Schema.Types.ObjectId,
-          ref: "emotion",
+          ref: "Emotion",
         },
       ],
       required: true,

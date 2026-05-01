@@ -15,18 +15,14 @@ import {
 
 const tasksRoute = Router();
 
-tasksRoute.get("/", authenticate, getTasks);
+tasksRoute.use(authenticate);
 
-tasksRoute.post(
-  "/",
-  authenticate,
-  celebrate(createTaskSchema),
-  createTask
-);
+tasksRoute.get("/", getTasks);
+
+tasksRoute.post("/", celebrate(createTaskSchema), createTask);
 
 tasksRoute.patch(
   "/:taskId/status",
-  authenticate,
   celebrate(taskIdSchema),
   celebrate(updateTaskStatusSchema),
   changeTask
