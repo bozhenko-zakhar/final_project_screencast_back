@@ -10,11 +10,14 @@ import { updateDiary } from "./diaries/updateDiary.js";
 
 import { changeTask } from "./tasks/changeTask.js";
 import { createTask } from "./tasks/createTask.js";
-import { getTask } from "./tasks/getTask.js";
+import { getTasks } from "./tasks/getTask.js";
 
 import { getUser } from "./users/getUser.js";
 import { updateUserData } from "./users/updateUserData.js";
 import { updateUserImage } from "./users/updateUserImage.js";
+
+import { getMomStateInfo } from "./weeks/getMomStateInfo.js";
+import { getWeekInfo } from "./weeks/getWeekInfo.js";
 
 export const auth = {
 	loginUser,
@@ -33,11 +36,16 @@ export const diaries = {
 export const tasks = {
 	changeTask,
 	createTask,
-	getTask
+	getTasks
 };
 
 export const users = {
 	getUser,
 	updateUserData,
 	updateUserImage
+};
+
+export const weeks = {
+	getWeekInfo,
+	getMomStateInfo
 };

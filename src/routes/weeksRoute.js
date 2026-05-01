@@ -1,5 +1,20 @@
 import { Router } from "express";
+import { celebrate } from "celebrate";
+
+import { weeks } from "../controllers/index.js";
+import { getBabyStateByWeek } from '../controllers/weeks/getBabyStateByWeek.js';
+import { getMomStateInfo } from "../controllers/weeks/getMomStateInfo.js";
+import { getWeekInfo } from "../controllers/weeks/weeksController.js";
+
+import { getWeekSchema } from "../validations/weeksValidation.js";
+
+import { authenticate } from "../middleware/authenticate.js";
 
 const weeksRoute = Router();
+
+weeksRoute.get("/public", celebrate(getWeekSchema), getWeekInfo); // return { baby, daysLeft }
+weeksRoute.get('/private', authenticate, weeks.getWeekInfo);
+weeksRoute.get('/:weekNumber', authenticate, getBabyStateByWeek); // baby-state, req,user
+weeksRoute.get('/mom-state', authenticate, weeks.getMomStateInfo)
 
 export default weeksRoute;
