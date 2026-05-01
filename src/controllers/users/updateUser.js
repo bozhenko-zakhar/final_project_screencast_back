@@ -30,7 +30,7 @@ export const updateUser = async (req, res) => {
     throw createHttpError(409, "This email address is already in use.");
   }
 
-  const verificationToken = crypto.randomBytes(32).toString("hex");
+  // тимчасово прибрано: const verificationToken = crypto.randomBytes(32).toString("hex");
 
   const user = await User.findOneAndUpdate(
     { _id: userId },
@@ -39,7 +39,7 @@ export const updateUser = async (req, res) => {
       date,
       name,
       newEmail,
-      emailVerificationToken: verificationToken,
+      // тимчасово прибрано: emailVerificationToken: verificationToken,
     },
     { returnDocument: "after" }
   );
@@ -48,18 +48,19 @@ export const updateUser = async (req, res) => {
     throw createHttpError(404, "User not found");
   }
 
-  const verifyLink = `${process.env.BASE_URL}/api/users/verify-email/${verificationToken}`;
+  // тимчасово прибрано: const verifyLink = `${process.env.BASE_URL}/api/users/verify-email/${verificationToken}`;
 
-  await sendEmail({
+  /* тимчасово прибрано: await sendEmail({
     to: newEmail,
     subject: "Підтвердження електронної пошти",
     html: `
       <h3>Підтвердження електронної пошти</h3>
       <a href="${verifyLink}">${verifyLink}</a>
     `,
-  });
+  }); */
 
   return res.status(200).json({
-    message: "Лист для підтвердження надіслано",
+    // тимчасово прибрано: message: "Лист для підтвердження надіслано",
+    user
   });
 };
