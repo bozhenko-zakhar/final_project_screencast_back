@@ -21,5 +21,5 @@ export const loginUser = async (req, res) => {
 	const newSession = await createSession(user._id);
 	setSessionCookies(res, newSession);
 	
-	res.status(200).json("Login OK");
+	res.status(200).json(user);
 }
