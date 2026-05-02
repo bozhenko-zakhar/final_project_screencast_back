@@ -14,5 +14,5 @@ export const getWeekInfo = async (req, res) => {
       throw createHttpError(404, 'Baby state not found');
     };
 
-  res.status(200).json({ babyState, daysLeft });
+  res.status(200).json({ currentWeek, babyState, daysLeft });
 };

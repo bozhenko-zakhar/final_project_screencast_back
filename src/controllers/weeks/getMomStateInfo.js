@@ -1,18 +1,23 @@
-import { MomStateModel } from "../../models/mom_state.js";
-import { getWeekInfo } from "./getWeekInfo.js";
-import { getCurrentWeek } from "../../services/getCurrentWeek.js";
+import { MomStateModel } from '../../models/mom_state.js';
+import { getWeekInfo } from './getWeekInfo.js';
+import { getCurrentWeek } from '../../services/getCurrentWeek.js';
 
-export const getMomStateInfo = async(req, res) => {
+export const getMomStateInfo = async (req, res) => {
+  const requestedWeek = Number(req.query.weekNumber);
 
-    const {currentWeek} = getCurrentWeek(req.user);
+  const { currentWeek } = getCurrentWeek(req.user);
 
-    const momState = await MomStateModel.findOne({
-        weekNumber: currentWeek
-    });
+  const weekNumber = Number.isFinite(requestedWeek)
+    ? requestedWeek
+    : currentWeek;
 
-    if(!momState) {
-       throw createHttpError(404, 'Mom state not found');
-    };
+  const momState = await MomStateModel.findOne({
+    weekNumber,
+  });
 
-    res.status(200).json(momState);
-}
+  if (!momState) {
+    throw createHttpError(404, 'Mom state not found');
+  }
+
+  res.status(200).json(momState);
+};
