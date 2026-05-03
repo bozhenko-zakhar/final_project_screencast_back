@@ -4,11 +4,18 @@ import { getCurrentWeek } from '../../utils/getCurrentWeek.js';
 
 export const getBabyStateByWeek = async (req, res, next) => {
   try {
-    const { currentWeek } = getCurrentWeek(req.user);
+		const requestedWeek = Number(req.query.weekNumber);
+		
+		const { currentWeek } = getCurrentWeek(req.user);
+
+		const weekNumber = Number.isFinite(requestedWeek)
+			? requestedWeek
+			: currentWeek;
 
     const babyState = await BabyStateModel.findOne({
-      weekNumber: currentWeek,
+      weekNumber: weekNumber,
     });
+
     if (!babyState) {
       throw createHttpError(
         404,
@@ -16,9 +23,8 @@ export const getBabyStateByWeek = async (req, res, next) => {
       );
     }
     res.status(200).json({
-      status: 200,
-      message: `Успішно отримано дані для ${currentWeek} тижня`,
       data: babyState,
+			weekNumber
     });
   } catch (err) {
     next(err);
