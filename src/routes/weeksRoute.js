@@ -6,8 +6,6 @@ import { getBabyStateByWeek } from '../controllers/weeks/getBabyStateByWeek.js';
 import { getMomStateInfo } from '../controllers/weeks/getMomStateInfo.js';
 import { getWeekInfo } from '../controllers/weeks/weeksController.js';
 
-import { getWeekSchema } from '../validations/weeksValidation.js';
-
 import { authenticate } from '../middleware/authenticate.js';
 
 const weeksRoute = Router();
