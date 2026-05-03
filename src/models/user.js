@@ -6,7 +6,8 @@ const userSchema = new Schema(
     email: { type: String, unique: true, required: true, trim: true },
     password: { type: String, required: true },
     dueDate: { type: Date, required: false },
-    gender: {type: String, enum: ['boy', 'girl', null], required: false}
+    gender: {type: String, enum: ['boy', 'girl', null], required: false},
+		avatar: { type: String, required: false}
   },
   {
     timestamps: true,

@@ -1,7 +1,7 @@
 import createHttpError from "http-errors";
 import { BabyStateModel } from "../../models/baby_state.js";
 import { User } from "../../models/user.js";
-import { getCurrentWeek } from "../../services/getCurrentWeek.js";
+import { getCurrentWeek } from "../../utils/getCurrentWeek.js";
 
 export const getWeekInfo = async (req, res) => {
   const { currentWeek, daysLeft } = getCurrentWeek(req.user);

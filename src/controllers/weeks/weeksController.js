@@ -1,4 +1,4 @@
-import { getWeekData } from '../../services/weeksService.js';
+import { BabyStateModel } from '../../models/baby_state.js';
 import createHttpError from 'http-errors';
 
 export const getWeekInfo = async (req, res, next) => {
@@ -9,6 +9,7 @@ export const getWeekInfo = async (req, res, next) => {
     res.status(200).json({
       message: 'Success',
       data,
+			daysToBirth: 280
     });
   } catch (error) {
     next(error);

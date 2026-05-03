@@ -10,7 +10,7 @@ export const updateUser = async (req, res) => {
   if (!newEmail) {
     const user = await User.findOneAndUpdate(
       { _id: userId },
-      { gender, date, name },
+      { gender, dueDate: date, name },
       { returnDocument: "after" }
     );
 

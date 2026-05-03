@@ -1,6 +1,6 @@
 import { MomStateModel } from '../../models/mom_state.js';
 import { getWeekInfo } from './getWeekInfo.js';
-import { getCurrentWeek } from '../../services/getCurrentWeek.js';
+import { getCurrentWeek } from '../../utils/getCurrentWeek.js';
 
 export const getMomStateInfo = async (req, res) => {
   const requestedWeek = Number(req.query.weekNumber);
@@ -19,5 +19,5 @@ export const getMomStateInfo = async (req, res) => {
     throw createHttpError(404, 'Mom state not found');
   }
 
-  res.status(200).json(momState);
+  res.status(200).json({ data: momState, weekNumber });
 };

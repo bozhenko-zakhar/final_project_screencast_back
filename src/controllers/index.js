@@ -17,6 +17,7 @@ import { updateUser } from './users/updateUser.js';
 import { updateUserAvatar } from './users/updateUserAvatar.js';
 
 import { getMomStateInfo } from './weeks/getMomStateInfo.js';
+import { getBabyStateByWeek } from './weeks/getBabyStateByWeek.js';
 import { getWeekInfo } from './weeks/getWeekInfo.js';
 
 export const auth = {
