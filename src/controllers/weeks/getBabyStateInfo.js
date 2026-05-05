@@ -19,8 +19,8 @@ export const getBabyStateInfo = async (req, res, next) => {
     if (!babyState) {
       throw createHttpError(404, `Інформацію для ${weekNumber} тижня не знайдено`);
     }
-		
-    res.status(200).json({ data: babyState });
+
+    res.status(200).json({ babyState });
   } catch (err) {
     next(err);
   }

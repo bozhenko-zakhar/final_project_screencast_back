@@ -12,7 +12,7 @@ export const getPublicWeekInfo = async (req, res, next) => {
 			throw createHttpError(404, 'Baby state or Mom state not found');
 		};
     
-    res.status(200).json({ daysToBirth, data: babyState });
+    res.status(200).json({ daysToBirth, babyState });
   } catch (error) {
     next(error);
   }
