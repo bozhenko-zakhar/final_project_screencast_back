@@ -19,13 +19,18 @@ const PORT = process.env.PORT ?? 3000;
 const app = express();
 
 app.use(express.json({ limit: '5mb' }));
-app.use(cors({ methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'] }));
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  }),
+);
 app.use(helmet());
 app.use(cookieParser());
 
 app.use('/api/auth', authRoute);
 app.use('/api/users', usersRoute);
-app.use('/api/emotions', emotionsRoute)
+app.use('/api/emotions', emotionsRoute);
 app.use('/api/tasks', tasksRoute);
 app.use('/api/diaries', diariesRoute);
 app.use('/api/weeks', weeksRoute);
@@ -35,6 +40,12 @@ app.use(errors());
 app.use(errorHandler);
 
 await conectMongoDB();
+
+console.log('CLOUDINARY:', {
+  cloud: process.env.CLOUDINARY_CLOUD_NAME,
+  key: process.env.CLOUDINARY_API_KEY,
+  secret: process.env.CLOUDINARY_API_SECRET ? 'OK' : 'MISSING',
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

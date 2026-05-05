@@ -17,23 +17,30 @@ export const generateTokens = () => ({
   refreshToken: crypto.randomBytes(30).toString('hex'),
 });
 
+const isProduction = process.env.NODE_ENV === 'production'; //додано
+
 export const setSessionCookies = (res, session) => {
   res.cookie('accessToken', session.accessToken, {
     httpOnly: true,
-    secure: true,
-    sameSite: 'none',
+    secure: isProduction, //змінено
+    sameSite: isProduction ? 'none' : 'lax', //змінено
+    path: '/', //додано
     maxAge: FIFTEEN_MINUTES,
   });
+
   res.cookie('refreshToken', session.refreshToken, {
     httpOnly: true,
-    secure: true,
-    sameSite: 'none',
+    secure: isProduction, //змінено
+    sameSite: isProduction ? 'none' : 'lax', //змінено
+    path: '/', //додано
     maxAge: ONE_DAY,
   });
+
   res.cookie('sessionId', String(session._id), {
     httpOnly: true,
-    secure: true,
-    sameSite: 'none',
+    secure: isProduction, //змінено
+    sameSite: isProduction ? 'none' : 'lax', //змінено
+    path: '/', //додано
     maxAge: ONE_DAY,
   });
 };
