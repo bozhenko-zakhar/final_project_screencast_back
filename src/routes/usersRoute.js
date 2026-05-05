@@ -10,7 +10,6 @@ import { getUser } from '../controllers/users/getUser.js';
 import { updateUser } from '../controllers/users/updateUser.js';
 import { updateUserAvatar } from '../controllers/users/updateUserAvatar.js';
 import { updateUserGender } from '../controllers/users/updateUserGender.js';
-import { verifyEmail } from '../controllers/users/verifyEmail.js';
 
 const router = Router();
 

@@ -4,13 +4,13 @@ import { User } from "../../models/user.js";
 import { sendEmail } from "../../utils/sendEmail.js";
 
 export const updateUser = async (req, res) => {
-  const { gender, date, name, newEmail } = req.body;
+  const { date, name, newEmail } = req.body;
   const userId = req.user._id;
 
   if (!newEmail) {
     const user = await User.findOneAndUpdate(
       { _id: userId },
-      { gender, dueDate: date, name },
+      { dueDate: date, name },
       { returnDocument: "after" }
     );
 
@@ -35,7 +35,6 @@ export const updateUser = async (req, res) => {
   const user = await User.findOneAndUpdate(
     { _id: userId },
     {
-      gender,
       date,
       name,
       newEmail,
@@ -48,19 +47,5 @@ export const updateUser = async (req, res) => {
     throw createHttpError(404, "User not found");
   }
 
-  // тимчасово прибрано: const verifyLink = `${process.env.BASE_URL}/api/users/verify-email/${verificationToken}`;
-
-  /* тимчасово прибрано: await sendEmail({
-    to: newEmail,
-    subject: "Підтвердження електронної пошти",
-    html: `
-      <h3>Підтвердження електронної пошти</h3>
-      <a href="${verifyLink}">${verifyLink}</a>
-    `,
-  }); */
-
-  return res.status(200).json({
-    // тимчасово прибрано: message: "Лист для підтвердження надіслано",
-    user
-  });
+  return res.status(200).json({ user });
 };
