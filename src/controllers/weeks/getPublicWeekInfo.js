@@ -1,4 +1,4 @@
-import { BabyStateModel } from "../../models/baby_state";
+import { BabyStateModel } from "../../models/baby_state.js";
 import createHttpError from "http-errors";
 
 export const getPublicWeekInfo = async (req, res, next) => {

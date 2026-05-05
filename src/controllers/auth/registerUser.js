@@ -4,7 +4,18 @@ import bcrypt from "bcrypt";
 import {createSession, setSessionCookies} from "../../services/auth.js" 
 
 export const registerUser = async (req, res) => {
-	const { name, email, password, dueDate = new Date(), gender = null } = req.body;
+	const {
+		name,
+		email,
+		password,
+		dueDate = (
+			new Date(
+				new Date().setDate(
+					new Date().getDate() + 39 * 7
+				))
+			),
+		gender = null
+	} = req.body;
 	
 	const existingUser = await User.findOne({ email });
 	if (existingUser) {

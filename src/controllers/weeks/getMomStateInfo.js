@@ -1,5 +1,4 @@
 import { MomStateModel } from '../../models/mom_state.js';
-import { getWeekInfo } from './getWeekInfo.js';
 import { getCurrentWeek } from '../../utils/getCurrentWeek.js';
 
 export const getMomStateInfo = async (req, res) => {
