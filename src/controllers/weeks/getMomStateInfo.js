@@ -19,5 +19,5 @@ export const getMomStateInfo = async (req, res) => {
     throw createHttpError(404, 'Mom state not found');
   }
 
-  res.status(200).json({ data: momState, weekNumber });
+  res.status(200).json({ data: momState });
 };

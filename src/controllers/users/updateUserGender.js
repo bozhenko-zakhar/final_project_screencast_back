@@ -16,7 +16,6 @@ export const updateUserGender = async (req, res) => {
   }
 
   res.status(200).json({
-    message: "Gender updated",
-    updatedUser,
+    updatedUser
   });
 };

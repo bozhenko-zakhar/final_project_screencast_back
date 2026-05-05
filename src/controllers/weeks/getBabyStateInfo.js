@@ -2,7 +2,7 @@ import createHttpError from 'http-errors';
 import { BabyStateModel } from '../../models/baby_state.js';
 import { getCurrentWeek } from '../../services/getCurrentWeek.js';
 
-export const getBabyStateByWeek = async (req, res, next) => {
+export const getBabyStateInfo = async (req, res, next) => {
   try {
     const requestedWeek = Number(req.query.weekNumber);
 
@@ -17,15 +17,10 @@ export const getBabyStateByWeek = async (req, res, next) => {
     });
 
     if (!babyState) {
-      throw createHttpError(
-        404,
-        `Інформацію для ${currentWeek} тижня не знайдено`,
-      );
+      throw createHttpError(404, `Інформацію для ${weekNumber} тижня не знайдено`);
     }
-    res.status(200).json({
-      data: babyState,
-      weekNumber,
-    });
+		
+    res.status(200).json({ data: babyState });
   } catch (err) {
     next(err);
   }
