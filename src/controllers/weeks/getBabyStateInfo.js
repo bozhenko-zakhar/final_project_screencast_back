@@ -1,6 +1,6 @@
 import createHttpError from 'http-errors';
 import { BabyStateModel } from '../../models/baby_state.js';
-import { getCurrentWeek } from '../../services/getCurrentWeek.js';
+import { getCurrentWeek } from '../../utils/getCurrentWeek.js';
 
 export const getBabyStateInfo = async (req, res, next) => {
   try {
