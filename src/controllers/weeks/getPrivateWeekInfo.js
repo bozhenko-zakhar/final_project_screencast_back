@@ -12,5 +12,5 @@ export const getPrivateWeekInfo = async (req, res) => {
 		throw createHttpError(404, 'Baby state not found');
 	};
 
-  res.status(200).json({ daysLeft, data: babyState });
+  res.status(200).json({ daysLeft, babyState });
 };
