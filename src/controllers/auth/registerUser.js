@@ -11,7 +11,7 @@ export const registerUser = async (req, res) => {
 		dueDate = (
 			new Date(
 				new Date().setDate(
-					new Date().getDate() + 39 * 7
+					new Date().getDate() + 40 * 7
 				))
 			),
 		gender = null
