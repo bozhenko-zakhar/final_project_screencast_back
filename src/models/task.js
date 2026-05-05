@@ -1,25 +1,28 @@
 import { model, Schema } from "mongoose";
 
-const taskSchema = new Schema({
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+const taskSchema = new Schema(
+  {
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    date: {
+      type: Date,
+      required: true,
+      default: Date.now,
+    },
+    name: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    isDone: {
+      type: Boolean,
+      default: false,
+    },
   },
-  date: {
-    type: Date,
-    required: true,
-    default: Date.now,
-  },
-  name: {
-    type: String,
-    trim: true,
-    required: true,
-  },
-  isDone: {
-    type: Boolean,
-    default: false,
-  },
-});
+  { timestamps: true },
+);
 
 export const Task = model("Task", taskSchema);

@@ -31,6 +31,14 @@ export const createTaskSchema = {
   }),
 };
 
+export const updateTaskSchema = {
+  [Segments.BODY]: Joi.object({
+    name: Joi.string().trim().min(1).max(96),
+    date: dateValidation,
+    isDone: Joi.boolean(),
+  }).min(1),
+};
+
 export const updateTaskStatusSchema = {
   [Segments.BODY]: Joi.object({
     isDone: Joi.boolean().required(),
