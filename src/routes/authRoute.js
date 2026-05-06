@@ -7,6 +7,7 @@ import { celebrate } from "celebrate";
 
 const authRoute = Router();
 
+
 authRoute.post("/login",  celebrate(loginUserSchema), auth.loginUser);
 authRoute.post('/logout', authenticate, auth.logoutUser);
 authRoute.post('/refresh', refreshAuthenticate, auth.refreshUserSession);
