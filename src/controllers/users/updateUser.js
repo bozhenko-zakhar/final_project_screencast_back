@@ -1,21 +1,21 @@
-import crypto from "node:crypto";
-import createHttpError from "http-errors";
-import { User } from "../../models/user.js";
-import { sendEmail } from "../../utils/sendEmail.js";
+import crypto from 'node:crypto';
+import createHttpError from 'http-errors';
+import { User } from '../../models/user.js';
+import { sendEmail } from '../../utils/sendEmail.js';
 
 export const updateUser = async (req, res) => {
-  const { date, name, newEmail } = req.body;
+  const { date, name, newEmail, gender } = req.body;
   const userId = req.user._id;
 
   if (!newEmail) {
     const user = await User.findOneAndUpdate(
       { _id: userId },
-      { dueDate: date, name },
-      { returnDocument: "after" }
+      { dueDate: date, name, gender },
+      { returnDocument: 'after' },
     );
 
     if (!user) {
-      throw createHttpError(404, "User not found");
+      throw createHttpError(404, 'User not found');
     }
 
     return res.status(200).json(user);
@@ -27,7 +27,7 @@ export const updateUser = async (req, res) => {
   });
 
   if (existingUser) {
-    throw createHttpError(409, "This email address is already in use.");
+    throw createHttpError(409, 'This email address is already in use.');
   }
 
   // тимчасово прибрано: const verificationToken = crypto.randomBytes(32).toString("hex");
@@ -35,17 +35,18 @@ export const updateUser = async (req, res) => {
   const user = await User.findOneAndUpdate(
     { _id: userId },
     {
-      date,
+      dueDate: date,
       name,
-      newEmail,
+      gender,
+      email: newEmail,
       // тимчасово прибрано: emailVerificationToken: verificationToken,
     },
-    { returnDocument: "after" }
+    { returnDocument: 'after' },
   );
 
   if (!user) {
-    throw createHttpError(404, "User not found");
+    throw createHttpError(404, 'User not found');
   }
 
-  return res.status(200).json({ user });
+  return res.status(200).json(user);
 };
