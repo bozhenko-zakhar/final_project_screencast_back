@@ -3,7 +3,7 @@ import createHttpError from "http-errors";
 
 export const getPublicWeekInfo = async (req, res, next) => {
 	const numberWeek = 1; 
-	const daysToBirth = 280;
+	const daysLeft = 280;
 
   try {
 		const babyState = await BabyStateModel.findOne({ weekNumber: numberWeek })
@@ -12,7 +12,7 @@ export const getPublicWeekInfo = async (req, res, next) => {
 			throw createHttpError(404, 'Baby state or Mom state not found');
 		};
     
-    res.status(200).json({ daysToBirth, babyState });
+    res.status(200).json({ daysLeft, babyState });
   } catch (error) {
     next(error);
   }
