@@ -13,7 +13,7 @@ export const deleteDiary = async (req, res, next) => {
     const diary = await Diary.findOneAndDelete({
       _id: diaryId,
       owner,
-    });
+    }).populate("emotions");
 
     if (!diary) {
       throw createHttpError(404, "Diary not found");

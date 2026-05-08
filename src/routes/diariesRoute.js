@@ -18,6 +18,12 @@ diariesRoute.post("/", celebrate(createDiarySchema), diaries.createDiary);
 
 diariesRoute.get("/", diaries.getDiary);
 
+diariesRoute.get(
+  "/:diaryId",
+  celebrate(diaryIdSchema),
+  diaries.getDiaryById
+);
+
 diariesRoute.patch(
   "/:diaryId",
   celebrate(diaryIdSchema),

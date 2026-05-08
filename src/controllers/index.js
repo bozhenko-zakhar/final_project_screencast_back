@@ -5,7 +5,7 @@ import { registerUser } from './auth/registerUser.js';
 
 import { createDiary } from './diaries/createDiary.js';
 import { deleteDiary } from './diaries/deleteDiary.js';
-import { getDiary } from './diaries/getDiary.js';
+import { getDiary, getDiaryById } from './diaries/getDiary.js';
 import { updateDiary } from './diaries/updateDiary.js';
 
 import { changeTask } from './tasks/changeTask.js';
@@ -32,6 +32,7 @@ export const diaries = {
   createDiary,
   deleteDiary,
   getDiary,
+  getDiaryById,
   updateDiary,
 };
 
@@ -48,8 +49,8 @@ export const users = {
 };
 
 export const weeks = {
-	getPublicWeekInfo,
-	getPrivateWeekInfo,
+  getPublicWeekInfo,
+  getPrivateWeekInfo,
   getBabyStateInfo,
   getMomStateInfo,
 };

@@ -1,8 +1,6 @@
 import createHttpError from "http-errors";
 import { Diary } from "../../models/diary.js";
 
-const getCurrentDate = () => new Date().toISOString().slice(0, 10);
-
 export const createDiary = async (req, res, next) => {
   try {
     const owner = req.user?._id ?? req.user?.id;
@@ -13,14 +11,15 @@ export const createDiary = async (req, res, next) => {
 
     const diary = await Diary.create({
       ...req.body,
-      date: req.body.date ?? getCurrentDate(),
       owner,
     });
+
+    const populatedDiary = await Diary.findById(diary._id).populate("emotions");
 
     res.status(201).json({
       status: 201,
       message: "Diary created successfully",
-      data: diary,
+      data: populatedDiary,
     });
   } catch (error) {
     next(error);
