@@ -7,14 +7,7 @@ export const registerUser = async (req, res) => {
 	const {
 		name,
 		email,
-		password,
-		dueDate = (
-			new Date(
-				new Date().setDate(
-					new Date().getDate() + 40 * 7
-				))
-			),
-		gender = null
+		password
 	} = req.body;
 	
 	const existingUser = await User.findOne({ email });
@@ -27,9 +20,7 @@ export const registerUser = async (req, res) => {
 	const newUser = await User.create({
 		name,
 		email,
-		password: hashedPassword,
-		dueDate,
-		gender,
+		password: hashedPassword
 	});
 	console.log(newUser._id)
 	const newSession = await createSession(newUser._id);
