@@ -4,7 +4,14 @@ import { User } from '../../models/user.js';
 import { sendEmail } from '../../utils/sendEmail.js';
 
 export const updateUser = async (req, res) => {
-  const { date, name, newEmail, gender } = req.body;
+  const { name, newEmail, gender = null,
+         date = (
+    			new Date(
+    				new Date().setDate(
+    					new Date().getDate() + 40 * 7
+    				))
+    			),
+  } = req.body;
   const userId = req.user._id;
 
   if (!newEmail) {
