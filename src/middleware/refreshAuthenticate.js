@@ -3,7 +3,7 @@ import createHttpError from 'http-errors';
 import { Session } from '../models/session.js';
 import { User } from '../models/user.js';
 import { generateTokens, setSessionCookies } from '../services/auth.js';
-import { ONE_HOUR, ONE_DAY } from '../constants/time.js';
+import { FIFTEEN_MINUTES, ONE_DAY } from '../constants/time.js';
 
 export const refreshAuthenticate = async (req, res, next) => {
   try {
@@ -34,7 +34,7 @@ export const refreshAuthenticate = async (req, res, next) => {
 
     session.accessToken = tokens.accessToken;
     session.refreshToken = tokens.refreshToken;
-    session.accessTokenValidUntil = new Date(Date.now() + ONE_HOUR);
+    session.accessTokenValidUntil = new Date(Date.now() + FIFTEEN_MINUTES);
     session.refreshTokenValidUntil = new Date(Date.now() + ONE_DAY);
 
     await session.save();
