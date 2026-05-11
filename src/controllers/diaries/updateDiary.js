@@ -14,7 +14,7 @@ export const updateDiary = async (req, res, next) => {
       { _id: diaryId, owner },
       req.body,
       { new: true, runValidators: true }
-    );
+    ).populate("emotions");
 
     if (!diary) {
       throw createHttpError(404, "Diary not found");

@@ -1,4 +1,5 @@
 import { Session } from '../../models/session.js';
+import { cookieOptions } from '../../services/auth.js';
 
 export const logoutUser = async (req, res, next) => {
   try {
@@ -7,9 +8,10 @@ export const logoutUser = async (req, res, next) => {
     if (sessionId) {
       await Session.deleteOne({ _id: sessionId });
     }
-    res.clearCookie('accessToken', { sameSite: 'none', secure: true });
-    res.clearCookie('refreshToken', { sameSite: 'none', secure: true });
-    res.clearCookie('sessionId', { sameSite: 'none', secure: true });
+
+    res.clearCookie('accessToken', cookieOptions);
+    res.clearCookie('refreshToken', cookieOptions);
+    res.clearCookie('sessionId', cookieOptions);
 
     res.status(204).send();
   } catch (err) {
